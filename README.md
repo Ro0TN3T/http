@@ -11,10 +11,6 @@ npm install httpsflood
 ```
 
 ```bash
-mv node_modules/httpsflood ./
-```
-
-```bash
 chmod 777 ddos.sh
 ```
 
