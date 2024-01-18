@@ -14,6 +14,10 @@ npm install httpsflood
 chmod 777 ddos.sh
 ```
 
+```bash
+run.sh
+```
+
 #### 🖼 Blogger statistic
 
 <center><img src="Blogger-test1.png" width=160></center>
