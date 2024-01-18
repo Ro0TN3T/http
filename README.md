@@ -15,7 +15,7 @@ chmod 777 ddos.sh
 ```
 
 ```bash
-run.sh
+bash run.sh
 ```
 
 #### 🖼 Blogger statistic
