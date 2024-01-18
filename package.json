@@ -1,6 +1,6 @@
 {
   "version": "1.2.5",
-  "name": "httpsflood",
+  "name": "http",
   "description": "http flood requests use lots of user agents, referers and proxies whose function is to send large numbers of visitors. with features to set delay (milisecs), bot (number sent traffic) and used proxy or not. AGPLv3 licensed httprequest",
   "main": "ddos.sh",
   "devDependencies": {},
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/naix0x/httprequest.git"
+    "url": "git+https://github.com/Ro0TN3T/http.git"
   },
   "keywords": [
     "httpflood",
     "flood",
     "ddos",
     "https-flood",
-    "http/2"
+    "http/2",
+    "layer7"
   ],
-  "author": "naix0x",
+  "author": "Ro0TN3T",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/naix0x/httprequest/issues"
+    "url": "https://t.me/acehcyberteam"
   },
-  "homepage": "https://github.com/naix0x/httprequest#readme"
+  "homepage": "https://github.com/Ro0TN3T/http#readme"
 }
